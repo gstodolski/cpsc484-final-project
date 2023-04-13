@@ -53,6 +53,31 @@ var frames = {
       }
     }
     return command;
+  },
+
+  get_pelvis_command: function (frame) {
+    var command = null;
+    if (frame.people.length < 1) {
+      return command;
+    }
+  
+    // Normalize by subtracting the root (pelvis) joint coordinates
+    var pelvis_x = frame.people[0].joints[0].position.x;
+    var pelvis_y = frame.people[0].joints[0].position.y;
+    var pelvis_z = frame.people[0].joints[0].position.z;
+  
+    if (pelvis_z < 100) {
+      return command;
+    }
+  
+    if (pelvis_y < 500 && pelvis_y > 100) {
+      if (pelvis_x > 200) {
+        command = 76; // RIGHT
+      } else if (pelvis_x < -200) {
+        command = 74; // LEFT
+      }
+    }
+    return command;
   }
 };
 
