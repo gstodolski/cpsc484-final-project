@@ -1,0 +1,78 @@
+<!-- Slideshow Info from: https://www.w3schools.com/howto/howto_js_slideshow.asp -->
+<!-- Popup Info from: https://codepen.io/imprakash/pen/GgNMXO -->
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Trivia Home</title>
+
+    <link rel="stylesheet" type="text/css" href="intro-style.css">
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.6.0/lib/p5.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" type="text/javascript"></script>
+  </head>
+  <body>
+    <br>
+    <h1>Find the Right <span style="color:cornflowerblue"> Student</span> <br> <span style="color:cornflowerblue"> Organization</span> For You!</h1>
+    <h3>Approach the screen to begin.</h3>
+
+    <div class="box">
+    <a class="button" href="#popup1" onclick="stopSlides()"><h4>@yale_hci_484</h4></a>
+    </div>
+  
+    <div id="popup1" class="overlay">
+      <div class="popup">
+        <a onclick="move_closer_calibration()"><img id="arrow-image" src="left-arrow.png" style="width:50%; display: block; margin-left: auto; margin-right: auto; height: 150px;"></a>
+        <h1 style="color: cornflowerblue;" id="popup-title">Set-Up Instructions</h1>
+          <a class="close" href="#" onclick="restartSlides()">&times;</a>
+            <div class="content">
+              <p id="popup-message">In order to begin the game, we must ensure you are in a good position to play. <br> To ensure the calibration is working, move to your left, so that you are on the left side of the screen.</p>
+            </div>
+      </div>
+    </div>
+
+    <div style="background-color: cornflowerblue;">
+    <br>
+    <div class="slideshow-container">
+
+    <div class="mySlides1 fade">
+    <img src="race.jpg" style="width:100%">
+    </div>
+
+    <div class="mySlides1 fade">
+    <img src="science.jpg" style="width:100%">
+    </div>
+
+    </div>
+
+    <div class="slideshow-container">
+
+    <div class="mySlides2 fade">
+    <img src="print.jpg" style="width:100%">
+    </div>
+
+    <div class="mySlides2 fade">
+    <img src="yale_chess.jpeg" style="width:100%">
+    </div>
+
+    </div>
+
+    <div class="slideshow-container">
+
+    <div class="mySlides3 fade">
+    <img src="art.jpg" style="width:100%">
+    </div>
+
+    <div class="mySlides3 fade">
+    <img src="paint.jpg" style="width:100%">
+    </div>
+
+    </div>
+
+    <br style="background-color: cornflowerblue;">
+    </div>
+
+    
+    <script src="slide.js"></script>
+  </body>
+</html>
