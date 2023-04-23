@@ -1,7 +1,7 @@
 // Adapted from https://p5js.org/examples/interaction-snake-game.html
 // Also adapted from Yale-CPSC484-HCI/demo-p5js repo
 
-var host = "cpsc484-01.yale.internal:8888";
+// var host = "cpsc484-01.yale.internal:8888";
 var host = "localhost:4444";
 $(document).ready(function() {
   frames.start();
