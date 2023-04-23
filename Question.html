@@ -1,0 +1,31 @@
+<html><!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="style.css">
+    <title>Question slide</title>
+  </head>
+  <body>
+    <h3>Question <span id="counter">0</span>/3</h3>
+    <h4>Answer the question below to get your club recommendation!</h4>
+    <br>
+    <p id="question_general">Do you enjoy volunteering and community service?</p>
+
+    
+    <div class="camera_container">
+      <div class="camera"></div>
+      <div class="camera"></div>
+    </div>
+
+
+    <div class="answers">
+      <button id=button_yes onclick="displayResultYes()">Yes</button> <!-- Yes/No buttons must be replaced with Kinect data analysis later-->
+      <button id=button_no onclick="displayResultNo()">No</button>
+    </div>
+
+    <h1 id="results"></h1>
+
+    
+    <script src="sketch.js"></script>
+  </body>
+  
+</html>
