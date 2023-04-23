@@ -1,15 +1,15 @@
-// Timer for question slides
+// Timer for quit slides
 function timer() {
     var t = setInterval(function() {
-    var timeHTML = document.getElementById("timer");
+    var timeHTML = document.getElementById("quit_timer");
     var seconds = parseInt(timeHTML.innerHTML);
     if (seconds <= 1) {
         clearInterval(t);
         dir = getDirection();
         if (dir == 'left') {
-            displayResultYes();
+            // quit();
         } else if (dir == 'right') {
-            displayResultNo();
+            window.location.href = "question.html";
         }
     }
     seconds--;

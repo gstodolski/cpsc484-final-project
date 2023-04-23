@@ -83,7 +83,7 @@ h5 {
     color:cornflowerblue;
 }
 
-#timer {
+#timer, #quit_timer {
     color:cornflowerblue;
     font-size: 45;
     font-weight: 800;
