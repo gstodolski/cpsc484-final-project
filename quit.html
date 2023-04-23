@@ -1,0 +1,25 @@
+<html><!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="style.css">
+    <title>Quit?</title>
+  </head>
+  <body>
+    <h4>Your hands are raised!</h4>
+    <h3>Would you like to quit?</h3>
+    <br>
+    <p id="question_general">Select "Yes" to quit, "No" to resume the game.</p>
+    
+    <div class="camera_container">
+      <div class="camera"></div>
+      <div class="camera"></div>
+    </div>
+
+    <div class="answers">
+      <button id=button_yes onclick="displayResultYes()">Yes</button> <!-- Yes/No buttons must be replaced with Kinect data analysis later-->
+      <button id=button_no onclick="displayResultNo()">No</button>
+    </div>
+
+    <script src="sketch.js"></script>
+  </body>
+</html>
