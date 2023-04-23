@@ -5,53 +5,70 @@ let current_question = document.getElementById("question_general");
 // Controls what the final result (club recommendation) is
 let final_result = document.getElementById("results");
 
+let counter_element = document.getElementById("counter");
+let counter = 0;
+
 // Determines what the next question is if user responds "yes"
 function displayResultYes() {
-    if (current_question.innerHTML == "Question 1: Do you enjoy volunteering and community service?") {
-        current_question.innerHTML = "Question 2a: Do you want to network and/or mentor other CS majors?";
+    if (current_question.innerHTML == "Do you enjoy volunteering and community service?") {
+        current_question.innerHTML = "Do you want to network and/or mentor other CS majors?";
     }
-    else if (current_question.innerHTML == "Question 2a: Do you want to network and/or mentor other CS majors?") {
-        current_question.innerHTML = "Question 3a: Do you identify as a woman or gender minority?";
+    else if (current_question.innerHTML == "Do you want to network and/or mentor other CS majors?") {
+        current_question.innerHTML = "Do you identify as a woman or gender minority?";
     }
-    else if (current_question.innerHTML == "Question 2b: Would you like to host and participate in competitions?") {
-        current_question.innerHTML = "Question 4a: Are you interested in quantum computing?";
+    else if (current_question.innerHTML == "Would you like to host and participate in competitions?") {
+        current_question.innerHTML = "Are you interested in quantum computing?";
     }
-    else if (current_question.innerHTML == "Question 3a: Do you identify as a woman or gender minority?") {
+    else if (current_question.innerHTML == "Do you identify as a woman or gender minority?") {
         final_result.innerHTML = "WGiCS";
     }
-    else if (current_question.innerHTML == "Question 3b: Are you interested in the intersection between computer science and the visual arts?") {
+    else if (current_question.innerHTML == "Are you interested in the intersection between computer science and the visual arts?") {
         final_result.innerHTML = "Design@Yale";
     }
-    else if (current_question.innerHTML == "Question 4a: Are you interested in quantum computing?") {
+    else if (current_question.innerHTML == "Are you interested in quantum computing?") {
         final_result.innerHTML = "YuQC";
     }
-    else if (current_question.innerHTML == "Question 4b: Are you interested in maintaining Yale websites like 'Yale Menus' or 'CourseTable'?") {
+    else if (current_question.innerHTML == "Are you interested in maintaining Yale websites like 'Yale Menus' or 'CourseTable'?") {
         final_result.innerHTML = "YCS";
     }
+    counter ++;
+    counter_element.innerHTML = counter;
+    removeButton();
 }
 
 // Determines what the next question is if user responds "no"
 function displayResultNo() {
-    if (current_question.innerHTML == "Question 1: Do you enjoy volunteering and community service?") {
-        current_question.innerHTML = "Question 2b: Would you like to host and participate in competitions?";
+    if (current_question.innerHTML == "Do you enjoy volunteering and community service?") {
+        current_question.innerHTML = "Would you like to host and participate in competitions?";
     }
-    else if (current_question.innerHTML == "Question 2a: Do you want to network and/or mentor other CS majors?") {
-        current_question.innerHTML = "Question 3b: Are you interested in the intersection between computer science and the visual arts?";
+    else if (current_question.innerHTML == "Do you want to network and/or mentor other CS majors?") {
+        current_question.innerHTML = "Are you interested in the intersection between computer science and the visual arts?";
     }
-    else if (current_question.innerHTML == "Question 2b: Would you like to host and participate in competitions?") {
+    else if (current_question.innerHTML == "Would you like to host and participate in competitions?") {
         current_question.innerHTML = "Question 4b: Are you interested in maintaining Yale websites like 'Yale Menus' or 'CourseTable'?";
     }
-    else if (current_question.innerHTML == "Question 3a: Do you identify as a woman or gender minority?") {
+    else if (current_question.innerHTML == "Do you identify as a woman or gender minority?") {
         final_result.innerHTML = "DSAC";
     }
-    else if (current_question.innerHTML == "Question 3b: Are you interested in the intersection between computer science and the visual arts?") {
+    else if (current_question.innerHTML == "Are you interested in the intersection between computer science and the visual arts?") {
         final_result.innerHTML = "CodeHaven";
     }
-    else if (current_question.innerHTML == "Question 4a: Are you interested in quantum computing?") {
+    else if (current_question.innerHTML == "Are you interested in quantum computing?") {
         final_result.innerHTML = "YHack";
     }
-    else if (current_question.innerHTML == "Question 4b: Are you interested in maintaining Yale websites like 'Yale Menus' or 'CourseTable'?") {
+    else if (current_question.innerHTML == "Are you interested in maintaining Yale websites like 'Yale Menus' or 'CourseTable'?") {
         final_result.innerHTML = "Y-IEEE";
+    }
+    counter++;
+    counter_element.innerHTML = counter;
+    removeButton();
+}
+
+// Remove button when counter is at 3
+function removeButton() {
+    if (counter == 3) {
+        document.getElementById("button_yes").style.display = "none";
+        document.getElementById("button_no").style.display = "none";
     }
 }
 
