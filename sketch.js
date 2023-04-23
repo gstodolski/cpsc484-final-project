@@ -1,7 +1,84 @@
+
+// Controls what question is being displayed
+let current_question = document.getElementById("question_general");
+
+// Controls what the final result (club recommendation) is
+let final_result = document.getElementById("results");
+
+// Keeps track of how many questions have been asked
+let counter_element = document.getElementById("counter");
+let counter = 0;
+
+// Determines what the next question is if user responds "yes"
+function displayResultYes() {
+    if (current_question.innerHTML == "Do you enjoy volunteering and community service?") {
+        current_question.innerHTML = "Do you want to network and/or mentor other CS majors?";
+    }
+    else if (current_question.innerHTML == "Do you want to network and/or mentor other CS majors?") {
+        current_question.innerHTML = "Do you identify as a woman or gender minority?";
+    }
+    else if (current_question.innerHTML == "Would you like to host and participate in competitions?") {
+        current_question.innerHTML = "Are you interested in quantum computing?";
+    }
+    else if (current_question.innerHTML == "Do you identify as a woman or gender minority?") {
+        final_result.innerHTML = "WGiCS";
+    }
+    else if (current_question.innerHTML == "Are you interested in the intersection between computer science and the visual arts?") {
+        final_result.innerHTML = "Design@Yale";
+    }
+    else if (current_question.innerHTML == "Are you interested in quantum computing?") {
+        final_result.innerHTML = "YuQC";
+    }
+    else if (current_question.innerHTML == "Are you interested in maintaining Yale websites like 'Yale Menus' or 'CourseTable'?") {
+        final_result.innerHTML = "YCS";
+    }
+    counter ++;
+    counter_element.innerHTML = counter;
+    removeButton();
+}
+
+// Determines what the next question is if user responds "no"
+function displayResultNo() {
+    if (current_question.innerHTML == "Do you enjoy volunteering and community service?") {
+        current_question.innerHTML = "Would you like to host and participate in competitions?";
+    }
+    else if (current_question.innerHTML == "Do you want to network and/or mentor other CS majors?") {
+        current_question.innerHTML = "Are you interested in the intersection between computer science and the visual arts?";
+    }
+    else if (current_question.innerHTML == "Would you like to host and participate in competitions?") {
+        current_question.innerHTML = "Are you interested in maintaining Yale websites like 'Yale Menus' or 'CourseTable'?";
+    }
+    else if (current_question.innerHTML == "Do you identify as a woman or gender minority?") {
+        final_result.innerHTML = "DSAC";
+    }
+    else if (current_question.innerHTML == "Are you interested in the intersection between computer science and the visual arts?") {
+        final_result.innerHTML = "CodeHaven";
+    }
+    else if (current_question.innerHTML == "Are you interested in quantum computing?") {
+        final_result.innerHTML = "YHack";
+    }
+    else if (current_question.innerHTML == "Are you interested in maintaining Yale websites like 'Yale Menus' or 'CourseTable'?") {
+        final_result.innerHTML = "Y-IEEE";
+    }
+    counter++;
+    counter_element.innerHTML = counter;
+    removeButton();
+}
+
+// Remove button when counter is at 3
+function removeButton() {
+    if (counter == 3) {
+        document.getElementById("button_yes").style.display = "none";
+        document.getElementById("button_no").style.display = "none";
+    }
+}
+
+
+
 // Adapted from https://p5js.org/examples/interaction-snake-game.html
 // Also adapted from Yale-CPSC484-HCI/demo-p5js repo
 
-var host = "localhost:4444";
+/* var host = "localhost:4444";
 $(document).ready(function() {
   frames.start();
   twod.start();
@@ -21,36 +98,31 @@ var frames = {
     }
   },
 
-  get_right_wrist_command: function (frame) {
+  is_raising_hands: function (frame) {
     var command = null;
     if (frame.people.length < 1) {
       return command;
     }
 
     // Normalize by subtracting the root (pelvis) joint coordinates
-    var pelvis_x = frame.people[0].joints[0].position.x;
-    var pelvis_y = frame.people[0].joints[0].position.y;
-    var pelvis_z = frame.people[0].joints[0].position.z;
-    var right_wrist_x = (frame.people[0].joints[14].position.x - pelvis_x) * -1;
-    var right_wrist_y = (frame.people[0].joints[14].position.y - pelvis_y) * -1;
-    var right_wrist_z = (frame.people[0].joints[14].position.z - pelvis_z) * -1;
+    var neck_x = frame.people[0].joints[3].position.x;
+    var neck_y = frame.people[0].joints[3].position.y;
+    var neck_z = frame.people[0].joints[3].position.z;
+    var left_wrist_x = (frame.people[0].joints[7].position.x - neck_x) * -1;
+    var left_wrist_y = (frame.people[0].joints[7].position.y - neck_y) * -1;
+    var left_wrist_z = (frame.people[0].joints[7].position.z - neck_z) * -1;
+    var right_wrist_x = (frame.people[0].joints[14].position.x - neck_x) * -1;
+    var right_wrist_y = (frame.people[0].joints[14].position.y - neck_y) * -1;
+    var right_wrist_z = (frame.people[0].joints[14].position.z - neck_z) * -1;
 
-    if (right_wrist_z < 100) {
+    if (left_wrist_z && right_wrist_z < 100) {
       return command;
     }
 
-    if (right_wrist_x < 200 && right_wrist_x > -200) {
-      if (right_wrist_y > 500) {
-        command = 73; // UP
-      } else if (right_wrist_y < 100) {
-        command = 75; // DOWN
-      }
-    } else if (right_wrist_y < 500 && right_wrist_y > 100) {
-      if (right_wrist_x > 200) {
-        command = 76; // RIGHT
-      } else if (right_wrist_x < -200) {
-        command = 74; // LEFT
-      }
+    if (right_wrist_y > 500 && left_wrist_y > 500) {
+      command = 100; // QUIT
+    } else {
+      command = 1; // NOT QUIT
     }
     return command;
   },
@@ -151,7 +223,7 @@ function draw() {
   updateHandContainer();
   checkGameStatus();
   checkForFruit();
-}
+} */
 
 /*
  The segments are updated based on the direction of the snake.
@@ -164,7 +236,7 @@ function draw() {
  predefined value 'diff' than its second to last segment. And if it's going up
  or down, the segment's y coordinate is affected.
 */
-function updateSnakeCoordinates() {
+/* function updateSnakeCoordinates() {
   for (let i = 0; i < numSegments - 1; i++) {
     xCor[i] = xCor[i + 1];
     yCor[i] = yCor[i + 1];
@@ -210,14 +282,14 @@ function updateHandContainer() {
       downArrow.className += ' active-down';
       break;
   }
-}
+} */
 
 /*
  I always check the snake's head position xCor[xCor.length - 1] and
  yCor[yCor.length - 1] to see if it touches the game's boundaries
  or if the snake hits itself.
 */
-function checkGameStatus() {
+/* function checkGameStatus() {
   if (
     xCor[xCor.length - 1] > width ||
     xCor[xCor.length - 1] < 0 ||
@@ -229,13 +301,13 @@ function checkGameStatus() {
     const scoreVal = parseInt(scoreElem.html().substring(8));
     scoreElem.html('Game ended! Your score was : ' + scoreVal);
   }
-}
+} */
 
 /*
  If the snake hits itself, that means the snake head's (x,y) coordinate
  has to be the same as one of its own segment's (x,y) coordinate.
 */
-function checkSnakeCollision() {
+/* function checkSnakeCollision() {
   const snakeHeadX = xCor[xCor.length - 1];
   const snakeHeadY = yCor[yCor.length - 1];
   for (let i = 0; i < xCor.length - 1; i++) {
@@ -244,13 +316,13 @@ function checkSnakeCollision() {
     }
   }
 }
-
+ */
 /*
  Whenever the snake consumes a fruit, I increment the number of segments,
  and just insert the tail segment again at the start of the array (basically
  I add the last segment again at the tail, thereby extending the tail)
 */
-function checkForFruit() {
+/* function checkForFruit() {
   point(xFruit, yFruit);
   if (xCor[xCor.length - 1] === xFruit && yCor[yCor.length - 1] === yFruit) {
     const prevScore = parseInt(scoreElem.html().substring(8));
@@ -261,19 +333,19 @@ function checkForFruit() {
     updateFruitCoordinates();
   }
 }
-
-function updateFruitCoordinates() {
+ */
+//function updateFruitCoordinates() {
   /*
     The complex math logic is because I wanted the point to lie
     in between 100 and width-100, and be rounded off to the nearest
     number divisible by 10, since I move the snake in multiples of 10.
   */
 
-  xFruit = floor(random(10, (width - 100) / 10)) * 10;
+/*   xFruit = floor(random(10, (width - 100) / 10)) * 10;
   yFruit = floor(random(10, (height - 100) / 10)) * 10;
-}
+} */
 
-function sendWristCommand(command) {
+/* function sendWristCommand(command) {
   switch (command) {
     case 74:
       if (direction !== 'right') {
@@ -297,4 +369,4 @@ function sendWristCommand(command) {
       break;
   }
   console.log(direction);
-}
+} */
