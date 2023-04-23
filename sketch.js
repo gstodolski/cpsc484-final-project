@@ -5,6 +5,7 @@ let current_question = document.getElementById("question_general");
 // Controls what the final result (club recommendation) is
 let final_result = document.getElementById("results");
 
+// Keeps track of how many questions have been asked
 let counter_element = document.getElementById("counter");
 let counter = 0;
 
