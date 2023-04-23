@@ -45,7 +45,7 @@ function displayResultNo() {
         current_question.innerHTML = "Are you interested in the intersection between computer science and the visual arts?";
     }
     else if (current_question.innerHTML == "Would you like to host and participate in competitions?") {
-        current_question.innerHTML = "Question 4b: Are you interested in maintaining Yale websites like 'Yale Menus' or 'CourseTable'?";
+        current_question.innerHTML = "Are you interested in maintaining Yale websites like 'Yale Menus' or 'CourseTable'?";
     }
     else if (current_question.innerHTML == "Do you identify as a woman or gender minority?") {
         final_result.innerHTML = "DSAC";
