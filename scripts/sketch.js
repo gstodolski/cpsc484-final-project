@@ -28,18 +28,20 @@ var frames = {
       return is_raising_hands;
     }
 
-    // Normalize by subtracting the root (pelvis) joint coordinates
-    var neck_x = frame.people[0].joints[3].position.x;
-    var neck_y = frame.people[0].joints[3].position.y;
-    var neck_z = frame.people[0].joints[3].position.z;
-    var left_wrist_x = (frame.people[0].joints[7].position.x - neck_x) * -1;
-    var left_wrist_y = (frame.people[0].joints[7].position.y - neck_y) * -1;
-    var left_wrist_z = (frame.people[0].joints[7].position.z - neck_z) * -1;
-    var right_wrist_x = (frame.people[0].joints[14].position.x - neck_x) * -1;
-    var right_wrist_y = (frame.people[0].joints[14].position.y - neck_y) * -1;
-    var right_wrist_z = (frame.people[0].joints[14].position.z - neck_z) * -1;
+    person = frame.find_closest_person(frame);
 
-    if (right_wrist_y > 500 && left_wrist_y > 500) {
+    // Normalize by subtracting the root (neck) joint coordinates
+    var neck_x = person.joints[3].position.x;
+    var neck_y = person.joints[3].position.y;
+    var neck_z = person.joints[3].position.z;
+    var left_wrist_x = (person.joints[7].position.x - neck_x);
+    var left_wrist_y = (person.joints[7].position.y - neck_y);
+    var left_wrist_z = (person.joints[7].position.z - neck_z);
+    var right_wrist_x = (person.joints[14].position.x - neck_x);
+    var right_wrist_y = (person.joints[14].position.y - neck_y);
+    var right_wrist_z = (person.joints[14].position.z - neck_z);
+
+    if (right_wrist_y > 0 && left_wrist_y > 0) {
       is_raising_hands = true; // QUIT
     }
     return is_raising_hands;
@@ -51,10 +53,12 @@ var frames = {
       return command;
     }
 
+    person = frame.find_closest_person(frame);
+
     // Normalize by subtracting the root (pelvis) joint coordinates
-    var pelvis_x = frame.people[0].joints[0].position.x;
-    var pelvis_y = frame.people[0].joints[0].position.y;
-    var pelvis_z = frame.people[0].joints[0].position.z;
+    var pelvis_x = person.joints[0].position.x;
+    var pelvis_y = person.joints[0].position.y;
+    var pelvis_z = person.joints[0].position.z;
 
     if (pelvis_z < 100) {
       return command;
@@ -78,6 +82,20 @@ var frames = {
       command = frame.get_pelvis_command;
     }
     return command;
+  },
+
+  find_closest_person: function (frame) {
+    var closest_person = null;
+    var closest_distance = 100000000;
+    for (var i = 0; i < frame.people.length; i++) {
+      var person = frame.people[i];
+      var distance = person.y_pos;
+      if (distance < closest_distance) {
+        closest_distance = distance;
+        closest_person = person;
+      }
+    }
+    return closest_person;
   }
 };
 
