@@ -1,8 +1,7 @@
 // Adapted from https://p5js.org/examples/interaction-snake-game.html
 // Also adapted from Yale-CPSC484-HCI/demo-p5js repo
 
-// var host = "cpsc484-01.yale.internal:8888";
-var host = "localhost:4444";
+var host = "cpsc484-01.yale.internal:8888";
 $(document).ready(function() {
   frames.start();
   twod.start();
@@ -15,7 +14,13 @@ var frames = {
     var url = "ws://" + host + "/frames";
     frames.socket = new WebSocket(url);
     frames.socket.onmessage = function (event) {
-      var command = frames.get_command(JSON.parse(event.data));
+      var frame = JSON.parse(event.data);
+      if (window.location.pathname.indexOf("/index.html") != -1) {
+        if (frames.find_closest_person(frame) !== null) {
+          window.location.href = "question.html";
+        }
+      }
+      var command = frames.get_command(frame);
       if (command !== null) {
         sendCommand(command);
       }
@@ -28,18 +33,12 @@ var frames = {
       return is_raising_hands;
     }
 
-    person = frame.find_closest_person(frame);
+    person = frames.find_closest_person(frame);
 
     // Normalize by subtracting the root (neck) joint coordinates
-    var neck_x = person.joints[3].position.x;
     var neck_y = person.joints[3].position.y;
-    var neck_z = person.joints[3].position.z;
-    var left_wrist_x = (person.joints[7].position.x - neck_x);
-    var left_wrist_y = (person.joints[7].position.y - neck_y);
-    var left_wrist_z = (person.joints[7].position.z - neck_z);
-    var right_wrist_x = (person.joints[14].position.x - neck_x);
-    var right_wrist_y = (person.joints[14].position.y - neck_y);
-    var right_wrist_z = (person.joints[14].position.z - neck_z);
+    var left_wrist_y = (person.joints[7].position.y - neck_y) * -1;
+    var right_wrist_y = (person.joints[14].position.y - neck_y) * -1;
 
     if (right_wrist_y > 0 && left_wrist_y > 0) {
       is_raising_hands = true; // QUIT
@@ -53,33 +52,33 @@ var frames = {
       return command;
     }
 
-    person = frame.find_closest_person(frame);
+    person = frames.find_closest_person(frame);
 
     // Normalize by subtracting the root (pelvis) joint coordinates
     var pelvis_x = person.joints[0].position.x;
     var pelvis_y = person.joints[0].position.y;
     var pelvis_z = person.joints[0].position.z;
+    // console.log("X: " + pelvis_x + ", Y: " + pelvis_y + ", Z: " + pelvis_z);
 
-    if (pelvis_z < 100) {
+    // If the person is too far away, don't do anything
+    if (pelvis_z > 2500) {
       return command;
     }
 
-    if (pelvis_y < 500 && pelvis_y > 100) {
-      if (pelvis_x > 200) {
-        command = 1; // RIGHT
-      } else if (pelvis_x < -200) {
-        command = 2; // LEFT
-      }
+    if (pelvis_x > 0) {
+      command = 1; // LEFT
+    } else if (pelvis_x < 0) {
+      command = 2; // RIGHT
     }
     return command;
   },
   
   get_command: function (frame) {
     var command = null;
-    if (frame.is_raising_hands == true) {
+    if (frames.is_raising_hands(frame) == true) {
       command = 99; // QUIT
     } else {
-      command = frame.get_pelvis_command;
+      command = frames.get_pelvis_command(frame);
     }
     return command;
   },
@@ -87,12 +86,14 @@ var frames = {
   find_closest_person: function (frame) {
     var closest_person = null;
     var closest_distance = 100000000;
-    for (var i = 0; i < frame.people.length; i++) {
-      var person = frame.people[i];
-      var distance = person.y_pos;
-      if (distance < closest_distance) {
-        closest_distance = distance;
-        closest_person = person;
+    if (frame.people) {
+      for (var i = 0; i < frame.people.length; i++) {
+        var person = frame.people[i];
+        var distance = person.y_pos;
+        if (distance < closest_distance) {
+          closest_distance = distance;
+          closest_person = person;
+        }
       }
     }
     return closest_person;
@@ -118,16 +119,15 @@ var twod = {
 function sendCommand(command) {
   switch (command) {
     case 1:
-      direction = 'right';
+      direction = 'left';
       break;
     case 2:
-      direction = 'left';
+      direction = 'right';
       break;
     case 99:
       window.location.href = "quit.html";
       break;
   }
-  console.log(direction);
 }
 
 function getDirection() {
