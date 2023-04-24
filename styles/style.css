@@ -80,12 +80,22 @@ h4 {
     float: left;
     text-align: center;
     padding-top: 40;
-    padding-bottom:-100;
+
     font-size: 35;
     margin: -27;
-    color: black;
+    color: cornflowerblue;
  }
  
+ .directionRight{
+    color: cornflowerblue; 
+    width: 50%; 
+    float: right; 
+    text-align: center; 
+    font-size: 35; 
+    padding-top: 40;
+    
+    margin: -27;
+}
  
  /* -- Container for the two Kinect response boxes will be -- */
  .camera_container {
