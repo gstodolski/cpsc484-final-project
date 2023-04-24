@@ -6,22 +6,30 @@
     <title>Question slide</title>
   </head>
   <body>
-    <h3>Question <span id="counter">1</span>/3</h3>
-    <h4>Answer the question below to get your club recommendation!</h4>
-    <br>
-    <p id="question_general">Do you enjoy volunteering and community service?</p>
+    <div class="top_header">
+      <h3>Question <span id="counter">1</span>/3</h3>
+      <p id="question_general">Do you enjoy volunteering and community service?</p>
+    </div>
+    
 
     
-    <div class="camera_container">
-      <div class="camera"></div>
-      <div class="camera"></div>
+    <div class="circle1">
+      <p class="YNanswers">Yes, absolutely! </p>
     </div>
-
+    <div class="circle2">
+        <p class="YNanswers">Not so much...</p>
+    </div>
 
     <div class="answers">
       <button id=button_yes onclick="displayResultYes()">Yes</button> <!-- Yes/No buttons must be replaced with Kinect data analysis later-->
       <button id=button_no onclick="displayResultNo()">No</button>
     </div>
+  </div>
+  
+    <div class="directionLeft"> Move to the left to select this answer! </div>
+    <div class="directionRight"> Move to the right to select this answer! </div>
+
+
 
     <div>
       <h4>Time remaining: <span id="timer">15</span> seconds</h4>
