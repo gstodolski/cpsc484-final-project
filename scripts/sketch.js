@@ -126,7 +126,6 @@ let final_result;
 let counter_element = document.getElementById("counter");
 let counter = 1;
 let timer_element = document.getElementById("timer");
-//let QRcode_element = document.getElementById("QRcode");
 
 // Keeps track of the user's response to the question
 let direction = 'left';
@@ -211,35 +210,42 @@ function onLoad() {
 function displayClubQR(club) {
   if (club == "WGiCS") {
     document.getElementById("QRcode").src = "images/WGICS_QR.png";
-    console.log("WGiCSs");
-    
+    document.getElementById("clubImg").src = "images/WG_CLUB.png";
+    document.getElementById("blurb").innerHTML = "Women and Gender Minorities in CS: A welcoming community that plans programs and events, encourages students to discover new opportunities, develops technical skills, and most importantly, builds long-lasting friendships."; 
   }
   else if (club == "Design@Yale") {
     document.getElementById("QRcode").src = "images/DESIGN_QR.png";
-    
+    document.getElementById("clubImg").src = "images/D@Y_CLUB.png"; 
+    document.getElementById("blurb").innerHTML = "Desgin@Yale: A design studio that hosts events exploring practice & industry across design disciplines and likes to have fun & make things together.";
   }
   else if (club == "YuQC") {
     document.getElementById("QRcode").src = "images/YUQC_QR.png";
-    
+    document.getElementById("clubImg").src = "images/YUQC_CLUB.png"; 
+    document.getElementById("blurb").innerHTML = "Yale Undergraduate Quantum Computing Club: An undergraduate academic organization sponsored by the Yale Quantum Institute, formed to promote and facilitate the participation of undergraduates in quantum information science at Yale.";
   }
   else if (club == "YCS") {
     document.getElementById("QRcode").src = "images/YCS_QR.png";
-    
+    document.getElementById("clubImg").src = "images/YCS_CLUB.png";
+    document.getElementById("blurb").innerHTML = "Yale Computer Society: Offers development projects for real-world SWE experience, and hosts hack nights, social events, speaker events with industry professionals";
   }
   else if (club == "DSAC") {
     document.getElementById("QRcode").src = "images/DSAC_QR.png";
-    
+    document.getElementById("clubImg").src = "images/DSAC_CLUB.png";
+    document.getElementById("blurb").innerHTML = "Computer Science Departmental Student Advisory Committee: represents Yale CS students to the faculty and administration, meeting with the Director of Undegraduate Studies and Department Chair several times a year.";
   }
   else if (club == "CodeHaven") {
     document.getElementById("QRcode").src = "images/CODEHAVEN_QR.png";
-    
+    document.getElementById("clubImg").src = "images/CH_CLUB.png";
+    document.getElementById("blurb").innerHTML = "CodeHaven: An undergraduate organization that connects New Haven middle school students with Yalies interested in computer science throughout the school year."; 
   }
   else if (club == "YHack") {
     document.getElementById("QRcode").src = "images/YHACK_QR.png";
-    
+    document.getElementById("clubImg").src = "images/YHACK_CLUB.png";
+    document.getElementById("blurb").innerHTML = "YHack: Yale's largest hackathon, where students from all over the world come together to explore new technologies, collaborate with others, and create innovative projects.";
   }
   else if (club == "Y-IEEE") {
     document.getElementById("QRcode").src = "images/YIEEE_QR.png";
-    
+    document.getElementById("clubImg").src = "images/YIEEE_CLUB.png";
+    document.getElementById("blurb").innerHTML = "Y-IEEE: Yale's chapter of the Institute of Electrical and Electronics Engineers, the world's largest technical professional organization for the advancement of technology.";
   }
 }
