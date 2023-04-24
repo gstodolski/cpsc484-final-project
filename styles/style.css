@@ -78,16 +78,17 @@ body {
  #question_general {
     font-size: 35px;
     text-align: center;
- }
- 
- 
- /* ----------------------- */
- /* --Recommendation.HTML-- */
- /* ----------------------- */
- 
- 
- h5 {
-    text-align: center;
+
+
+}
+
+
+/* ----------------------- */
+/* --Recommendation.HTML-- */
+/* ----------------------- */
+
+h5 {
+    text-align: center; 
     padding-top: 40;
     padding-bottom:-200;
     font-size: 40;
