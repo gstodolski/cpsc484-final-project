@@ -126,6 +126,7 @@ let final_result;
 let counter_element = document.getElementById("counter");
 let counter = 1;
 let timer_element = document.getElementById("timer");
+//let QRcode_element = document.getElementById("QRcode");
 
 // Keeps track of the user's response to the question
 let direction = 'left';
@@ -204,32 +205,41 @@ function onLoad() {
   let searchParams = new URLSearchParams(window.location.search);
   let club = searchParams.get("club");
   document.getElementById("results").innerHTML = club;
-  console.log(club);
+  displayClubQR(club);
 }
 
-function displayClubRecommendation() {
-  if (final_result.innerHTML == "WGiCS") {
-    document.getElementById("results").innerHTML = "WGiCS";
+function displayClubQR(club) {
+  if (club == "WGiCS") {
+    document.getElementById("QRcode").src = "images/WGICS_QR.png";
+    console.log("WGiCSs");
+    
   }
-  else if (final_result.innerHTML == "Design@Yale") {
-    //document.getElementById("dsac").style.display = "block";
+  else if (club == "Design@Yale") {
+    document.getElementById("QRcode").src = "images/DESIGN_QR.png";
+    
   }
-  else if (final_result.innerHTML == "YuQC") {
-    //document.getElementById("yuqc").style.display = "block";
+  else if (club == "YuQC") {
+    document.getElementById("QRcode").src = "images/YUQC_QR.png";
+    
   }
-  else if (final_result.innerHTML == "YCS") {
-    //document.getElementById("ycs").style.display = "block";
+  else if (club == "YCS") {
+    document.getElementById("QRcode").src = "images/YCS_QR.png";
+    
   }
-  else if (final_result.innerHTML == "DSAC") {
-    //document.getElementById("design").style.display = "block";
+  else if (club == "DSAC") {
+    document.getElementById("QRcode").src = "images/DSAC_QR.png";
+    
   }
-  else if (final_result.innerHTML == "CodeHaven") {
-    //document.getElementById("codehaven").style.display = "block";
+  else if (club == "CodeHaven") {
+    document.getElementById("QRcode").src = "images/CODEHAVEN_QR.png";
+    
   }
-  else if (final_result.innerHTML == "YHack") {
-    //document.getElementById("yhack").style.display = "block";
+  else if (club == "YHack") {
+    document.getElementById("QRcode").src = "images/YHACK_QR.png";
+    
   }
-  else if (final_result.innerHTML == "Y-IEEE") {
-    //document.getElementById("ieee").style.display = "block";
+  else if (club == "Y-IEEE") {
+    document.getElementById("QRcode").src = "images/YIEEE_QR.png";
+    
   }
 }
