@@ -11,6 +11,9 @@ function timer() {
                 if (closest_person !== null) {
                     window.location.href = "question.html";
                 }
+                else{
+                    window.location.href = "index.html";
+                }
             }
         }
         seconds--;
