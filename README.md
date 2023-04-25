@@ -14,8 +14,7 @@ The display revolves around a Buzzfeed-style quiz, like a personality quiz. The 
 02. The user is able to record information of how to get involved in these organizations and indicate when they have concluded collecting the information the display has provided.
 
 # Deployment Environment Constraints
-TODO: indicates explicitly if there are any constraints from the deployment environment (0.5 pts)
-the text file should explain any physical constraints that are important to consider when the course staff evaluates the system prototype. For instance, would users need to be able to stand at least a minimum distance away from the Kinect for the application to run as intended?
+The user should be within about a 6 feet radius of the kinect sensor. The user should also stand at least 2 feet away from the Kinect sensor for the application to run properly. Also when trying to quit the program, users need to have both hands above their necks. When answering the questions, you know that you are within the correct position limits of the Kinect when the box turns blue. 
 
 # Collaboration record 
 
@@ -29,3 +28,4 @@ I took on handling the Kinect data and body tracking parts of this assignment. T
 For assignment 5, I wrote the HTML for the introduction, calibration, and instructions slides. So, for this assignment, I integrated the body tracking data with these files (slide.js, index.html, instructions.html). I added the ability to move throught these first few slides using the functions and timer that Graham created. This involved a lot of debugging and trial-and-error to test what would work and create the most seamless experience for the user. Unfortunately, that meant removing the pop-up which was used for the calibration and instead integrating that function with the instructions page. I added functions to enable the final slide to return home upon finishing giving the user results as well as returning to the home page when the user decides not to continue with the game after reading the instructions page. I was able to meet with my group to test the project in person and make adjustments following the testing based on the errors we encountered. 
 
 ## Sem Asmelash: sma83
+I initially worked on creating the html and css files for the question and recommendation slides. We went through a couple of design iterations before landing on the current version. Within the question slide, I worked on integrating the kinect sensor data by implementing the function that changed the color of the left or right box depending on the user's position. I also helped implement the quit function which responds when the users hands are above their neck. I also worked with my teammates to debug/troubleshoot the entire project, making sure the kinect sensor data was being handled properly, ensuring that the properties of out html and css pages were properly adjusted to the display screen, and testing out the general functionality of the program. 
