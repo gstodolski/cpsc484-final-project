@@ -16,8 +16,8 @@ body {
  /* -- "Question n/3" styling-- */
  h3 {
     text-align: center;
-    padding-top: 40;
-    padding-bottom: -400;
+    padding-top: 60;
+    padding-bottom: 60;
     font-size: 40;
     margin: -27;
     color: black
@@ -180,8 +180,8 @@ body {
  .club_img {
     display: block;
     margin: 0 auto;
-    max-width: 100%;
-    max-height: 100%;
+    max-width: 90%;
+    max-height: 90%;
     object-fit: contain;
  }
  
