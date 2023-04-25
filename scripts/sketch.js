@@ -22,7 +22,9 @@ var frames = {
      closest_person = frames.find_closest_person(frame);
      if (window.location.pathname.indexOf("/index.html") != -1) {
        if (closest_person !== null) {
-        window.location.href = "instructions.html";
+        setTimeout(function() {
+          window.location.href = "instructions.html";
+        }, 5000);
        }
      }
      var command = frames.get_command(frame);
