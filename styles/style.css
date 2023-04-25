@@ -29,13 +29,21 @@ body {
  /* -- "Answer the question below..." styling-- */
  h4 {
     text-align: center;
-    padding-top: 40;
+    padding-top: 60;
     padding-bottom: -100;
     font-size: 35;
     margin: -27;
     color: black;
  }
  
+ h6 {
+      text-align: center;
+    padding-top: 40;
+    padding-bottom: -100;
+    font-size: 30;
+    margin: -27;
+    color: black;
+ }
  
  .top_header {
     background-color: cornflowerblue;
