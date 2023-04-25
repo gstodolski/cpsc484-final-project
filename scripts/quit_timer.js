@@ -12,7 +12,6 @@ function timer() {
         //     window.location.href = "question.html";
         // }
         window.location.href = "index.html";
-        
     }
     seconds--;
     timeHTML.innerHTML = seconds;

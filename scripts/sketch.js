@@ -20,8 +20,7 @@ var frames = {
      var frame = JSON.parse(event.data);
      if (window.location.pathname.indexOf("/index.html") != -1) {
        if (frames.find_closest_person(frame) !== null) {
-        // window.location.href = "question.html";
-        document.getElementById("calib_button").click();
+        window.location.href = "instructions.html";
        }
      }
      var command = frames.get_command(frame);
@@ -85,6 +84,7 @@ var frames = {
    }
    return command;
  },
+
   get_command: function (frame) {
    var command = null;
    if (frames.is_raising_hands(frame) == true) {

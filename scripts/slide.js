@@ -39,7 +39,7 @@ function restartSlides() {
 
 function display_question() {
     //On success, proceed to the question stage
-    window.location.href = "question.html";
+    window.location.href = "instructions.html";
 }
 
 function return_home(){
@@ -71,20 +71,20 @@ function failed_calibration() {
 }
 
 // Timer for calibration slide
-function timer() {
+function calibration_timer() {
     var t = setInterval(function() {
-    var timeHTML = document.getElementById("timer");
-    var seconds = parseInt(timeHTML.innerHTML);
-    if (seconds <= 1) {
-        clearInterval(t);
-        dir = getDirection();
-        if (dir == 'left') {
-            success_calibration();
-        } else {
-            failed_calibration();
+        var timeHTML = document.getElementById("calibration_timer");
+        var seconds = parseInt(timeHTML.innerHTML);
+        if (seconds <= 1) {
+            clearInterval(t);
+            dir = getDirection();
+            if (dir == 'left') {
+                success_calibration();
+            } else {
+                failed_calibration();
+            }
         }
-    }
-    seconds--;
-    timeHTML.innerHTML = seconds;
+        seconds--;
+        timeHTML.innerHTML = seconds;
     }, 1000);
 }
