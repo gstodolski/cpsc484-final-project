@@ -8,12 +8,12 @@ function timer() {
         var seconds = parseInt(timeHTML.innerHTML);
         console.log(direction);
         if(direction == "left"){
-            boxL.style.background = "red";
+            boxL.style.background = "cornflowerblue";
             boxR.style.background = "grey";
         }
         else if(direction == "right"){
             boxL.style.background = "grey";
-            boxR.style.background = "red";
+            boxR.style.background = "cornflowerblue";
         }
     
         if (seconds <= 1) {
