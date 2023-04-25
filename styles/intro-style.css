@@ -144,3 +144,18 @@ img {
     visibility: visible;
     opacity: 1;
   }
+
+  #timer {
+     color: cornflowerblue;
+     font-size: 45;
+     font-weight: 800;
+  }
+
+  h5 {
+    text-align: center;
+    padding-top: 40;
+    padding-bottom: -100;
+    font-size: 35;
+    margin: -27;
+    color: black;
+ }

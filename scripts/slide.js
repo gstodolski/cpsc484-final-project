@@ -37,26 +37,54 @@ function restartSlides() {
     showSlides(1, 2);
 }
 
+function display_question() {
+    //On success, proceed to the question stage
+    window.location.href = "question.html";
+}
+
+function return_home(){
+    // On failure, reset the popup to its original state
+    // Restart the slides of the home page
+    document.getElementById("return_home").click();
+    window.location.href = "index.html";
+}
+
 function success_calibration() {
     image_x = document.getElementById("arrow-image");
     image_x.parentNode.removeChild(image_x);
     document.getElementById("popup-title").innerHTML = "Calibration Successful";
     document.getElementById("popup-message").innerHTML = "Great, now onto the trivia!";
     document.getElementById("popup-message").style.fontSize="40px";
+    document.getElementById("time_rem").innerHTML = "";
+    setTimeout(display_question, 4000);
 }
 
 function failed_calibration() {
     image_x = document.getElementById("arrow-image");
     image_x.parentNode.removeChild(image_x);
     document.getElementById("popup-title").innerHTML = "Calibration Unsuccessful";
-    document.getElementById("popup-message").innerHTML = "Sorry we are still unable to detect your hand. The home screen will be displayed allowing you to try again.";
+    document.getElementById("popup-message").innerHTML = "Sorry we were unable to detect your movement to the left. The home screen will be displayed allowing you to try again.";
     document.getElementById("popup-message").style.fontSize="40px";
+    document.getElementById("time_rem").innerHTML = "";
+    //Restart by showing home screen after a timeout
+    setTimeout(return_home, 5000);
 }
 
-function move_closer_calibration() {
-    image_x = document.getElementById("arrow-image");
-    image_x.parentNode.removeChild(image_x);
-    document.getElementById("popup-title").innerHTML = "Set-Up Error";
-    document.getElementById("popup-message").innerHTML = "We were unable to detect your hand. Please try moving closer to the screen.";
-    document.getElementById("popup-message").style.fontSize="40px";
+// Timer for calibration slide
+function timer() {
+    var t = setInterval(function() {
+    var timeHTML = document.getElementById("timer");
+    var seconds = parseInt(timeHTML.innerHTML);
+    if (seconds <= 1) {
+        clearInterval(t);
+        dir = getDirection();
+        if (dir == 'left') {
+            success_calibration();
+        } else {
+            failed_calibration();
+        }
+    }
+    seconds--;
+    timeHTML.innerHTML = seconds;
+    }, 1000);
 }

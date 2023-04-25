@@ -20,7 +20,8 @@ var frames = {
      var frame = JSON.parse(event.data);
      if (window.location.pathname.indexOf("/index.html") != -1) {
        if (frames.find_closest_person(frame) !== null) {
-         window.location.href = "question.html";
+        // window.location.href = "question.html";
+        document.getElementById("calib_button").click();
        }
      }
      var command = frames.get_command(frame);
