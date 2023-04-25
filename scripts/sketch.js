@@ -8,6 +8,7 @@ $(document).ready(function() {
  twod.start();
 });
 
+var closest_person = null;
 
 var frames = {
  socket: null,
@@ -18,8 +19,9 @@ var frames = {
    frames.socket = new WebSocket(url);
    frames.socket.onmessage = function (event) {
      var frame = JSON.parse(event.data);
+     closest_person = frames.find_closest_person(frame);
      if (window.location.pathname.indexOf("/index.html") != -1) {
-       if (frames.find_closest_person(frame) !== null) {
+       if (closest_person !== null) {
         window.location.href = "instructions.html";
        }
      }

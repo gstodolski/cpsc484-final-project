@@ -5,10 +5,12 @@ function timer() {
         var seconds = parseInt(timeHTML.innerHTML);
         if (seconds <= 1) {
             clearInterval(t);
-            if (window.location.pathname.indexOf("/recommendation.html") != -1) {
+            if (window.location.pathname.indexOf("/Recommendation.html") != -1) {
                 window.location.href = "index.html";
             } else if (window.location.pathname.indexOf("/instructions.html") != -1) {
-                window.location.href = "question.html";
+                if (closest_person !== null) {
+                    window.location.href = "question.html";
+                }
             }
         }
         seconds--;
